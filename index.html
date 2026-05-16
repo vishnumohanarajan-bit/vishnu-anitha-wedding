@@ -6,40 +6,455 @@
 
 <title>Vishnu ❤️ Anitha</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    background:#f8f2e7;
+    font-family:'Cinzel', serif;
+    color:#5b2c06;
+    overflow-x:hidden;
+}
+
+/* LOADER */
+
+.loader{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:#fff8ef;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    flex-direction:column;
+}
+
+.loader h2{
+    font-size:28px;
+}
+
+/* MAIN */
+
+.container{
+    text-align:center;
+    padding:20px;
+    position:relative;
+}
+
+/* TOP FLORAL */
+
+.top-border{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+}
+
+/* GANESHA */
+
+.ganesha{
+    width:90px;
+    margin-top:20px;
+}
+
+/* TEXTS */
+
+.blessing{
+    margin-top:20px;
+    font-size:20px;
+    letter-spacing:2px;
+}
+
+.invite{
+    margin-top:25px;
+    font-size:18px;
+}
+
+.names{
+    font-family:'Great Vibes', cursive;
+    font-size:90px;
+    margin-top:10px;
+    color:#5a2200;
+}
+
+.and{
+    font-size:50px;
+    margin-top:-20px;
+}
+
+/* IMAGE */
+
+.couple{
+    width:85%;
+    max-width:420px;
+    border-radius:30px;
+    margin-top:30px;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.2);
+}
+
+/* EVENT BOX */
+
+.info-box{
+    margin-top:40px;
+    background:#fff8ef;
+    border:2px solid #d8b07b;
+    border-radius:25px;
+    padding:25px;
+    width:90%;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.info-flex{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.info-item{
+    flex:1;
+    min-width:180px;
+}
+
+.info-item h3{
+    margin-bottom:10px;
+}
+
+/* COUNTDOWN */
+
+.count-title{
+    margin-top:40px;
+    font-size:28px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.time-box{
+    background:#fff8ef;
+    border:2px solid #d8b07b;
+    padding:20px;
+    border-radius:20px;
+    width:120px;
+}
+
+.time-box h1{
+    margin:0;
+    font-size:40px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.btn{
+    padding:18px 35px;
+    border:none;
+    border-radius:50px;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.red{
+    background:#8b0000;
+}
+
+.green{
+    background:#1b5e20;
+}
+
+.map-btn{
+    margin-top:40px;
+    display:inline-block;
+    background:#fff8ef;
+    padding:18px 35px;
+    border-radius:50px;
+    border:2px solid #d8b07b;
+    text-decoration:none;
+    color:#5a2200;
+    font-size:20px;
+}
+
+/* FLOWERS */
+
+.flower{
+    position:fixed;
+    top:-50px;
+    animation:fall linear infinite;
+    z-index:1;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* MUSIC */
+
+.music{
+    position:fixed;
+    right:20px;
+    top:20px;
+    background:#fff;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    border:none;
+    font-size:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.names{
+    font-size:65px;
+}
+
+.time-box{
+    width:90px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="loader">
+<!-- LOADER -->
+
+<div class="loader" id="loader">
     <h2>Loading Your Invitation...</h2>
 </div>
 
-<section class="hero">
+<!-- MUSIC -->
 
-    <h4>With the Blessings of God Almighty</h4>
+<button class="music" onclick="toggleMusic()">🎵</button>
 
-    <h1>Vishnu</h1>
-    <h2>&</h2>
-    <h1>Anitha</h1>
+<audio id="bgmusic" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
 
-    <img src="couple.jpg" class="couple-img">
+<!-- FLOWERS -->
 
-    <div class="details">
-        <p>📅 21 August 2026</p>
-        <p>⏰ Muhurtham: 8:00 AM - 8:30 AM</p>
-        <p>📍 Guruvayoor Temple</p>
-    </div>
+<script>
 
-    <div id="countdown"></div>
+for(let i=0;i<25;i++){
 
-    <a href="https://maps.google.com" target="_blank">
-        <button>View Location</button>
-    </a>
+    let flower=document.createElement("div");
 
-</section>
+    flower.innerHTML="🌸";
 
-<script src="script.js"></script>
+    flower.classList.add("flower");
+
+    flower.style.left=Math.random()*100+"vw";
+
+    flower.style.animationDuration=(Math.random()*5+5)+"s";
+
+    flower.style.fontSize=(Math.random()*20+20)+"px";
+
+    document.body.appendChild(flower);
+
+}
+
+</script>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<img src="https://i.imgur.com/OZaT7jl.png" class="top-border">
+
+<img src="https://i.imgur.com/U6bXG8K.png" class="ganesha">
+
+<div class="blessing">
+WITH THE BLESSINGS OF GOD ALMIGHTY
+</div>
+
+<div class="invite">
+WE CORDIALLY INVITE YOU TO THE WEDDING OF
+</div>
+
+<div class="names">
+Vishnu
+</div>
+
+<div class="and">
+&
+</div>
+
+<div class="names">
+Anitha
+</div>
+
+<img src="couple.jpg" class="couple">
+
+<!-- INFO -->
+
+<div class="info-box">
+
+<div class="info-flex">
+
+<div class="info-item">
+<h3>📅 DATE</h3>
+<p>21 AUG 2026</p>
+</div>
+
+<div class="info-item">
+<h3>⏰ MUHURTHAM</h3>
+<p>8:00 AM - 8:30 AM</p>
+</div>
+
+<div class="info-item">
+<h3>📍 VENUE</h3>
+<p>GURUVAYOOR TEMPLE</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- COUNTDOWN -->
+
+<div class="count-title">
+COUNTDOWN TO OUR BIG DAY
+</div>
+
+<div class="countdown">
+
+<div class="time-box">
+<h1 id="days">00</h1>
+<p>DAYS</p>
+</div>
+
+<div class="time-box">
+<h1 id="hours">00</h1>
+<p>HOURS</p>
+</div>
+
+<div class="time-box">
+<h1 id="minutes">00</h1>
+<p>MINUTES</p>
+</div>
+
+<div class="time-box">
+<h1 id="seconds">00</h1>
+<p>SECONDS</p>
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<a class="btn red" href="#">
+❤️ WILL ATTEND
+</a>
+
+<a class="btn green" href="#">
+😊 WILL NOT ATTEND
+</a>
+
+</div>
+
+<!-- MAP -->
+
+<br>
+
+<a class="map-btn"
+href="https://maps.google.com/?q=Guruvayur+Temple"
+target="_blank">
+
+📍 VIEW LOCATION
+
+</a>
+
+<br><br><br>
+
+</div>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* LOADER */
+
+window.onload=function(){
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.display="none";
+
+},2000);
+
+}
+
+/* MUSIC */
+
+function toggleMusic(){
+
+let music=document.getElementById("bgmusic");
+
+if(music.paused){
+
+music.play();
+
+}else{
+
+music.pause();
+
+}
+
+}
+
+/* COUNTDOWN */
+
+const weddingDate=new Date("August 21, 2026 08:00:00").getTime();
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+
+const gap=weddingDate-now;
+
+const days=Math.floor(gap/(1000*60*60*24));
+
+const hours=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+
+const minutes=Math.floor((gap%(1000*60*60))/(1000*60));
+
+const seconds=Math.floor((gap%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=days;
+document.getElementById("hours").innerHTML=hours;
+document.getElementById("minutes").innerHTML=minutes;
+document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+</script>
 
 </body>
 </html>
