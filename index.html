@@ -215,6 +215,61 @@ body{
     font-size:25px;
 }
 
+/* RSVP POPUP */
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:9999;
+padding:20px;
+box-sizing:border-box;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+border-radius:25px;
+width:100%;
+max-width:420px;
+text-align:center;
+box-shadow:0px 10px 30px rgba(0,0,0,0.2);
+}
+
+.popup-box h2{
+margin-bottom:20px;
+color:#5a2200;
+}
+
+.popup-input{
+width:90%;
+padding:15px;
+margin-top:15px;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:16px;
+font-family:'Cinzel', serif;
+outline:none;
+}
+
+.popup-input:focus{
+border:2px solid #d8b07b;
+}
+
+.close-btn{
+background:none;
+border:none;
+font-size:18px;
+cursor:pointer;
+color:#5a2200;
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -361,21 +416,105 @@ COUNTDOWN TO OUR BIG DAY
 
 <div class="buttons">
 
-<a class="btn green"
-href="https://docs.google.com/spreadsheets/d/1D6gGJs7LfFv_hJGIq2brExaZSmYoGiUrEiOilWhsos8/edit?usp=sharing"
-target="_blank">
+<button class="btn green"
+onclick="openAttendPopup()">
 
 💚 Happily Attending
 
-</a>
+</button>
 
-<a class="btn red"
-href="https://docs.google.com/spreadsheets/d/1D6gGJs7LfFv_hJGIq2brExaZSmYoGiUrEiOilWhsos8/edit?usp=sharing"
-target="_blank">
+<button class="btn red"
+onclick="openSorryPopup()">
 
 ❤️ Unable To Attend
 
-</a>
+</button>
+
+</div>
+
+<!-- ATTENDING POPUP -->
+
+<div id="attendPopup"
+class="popup">
+
+<div class="popup-box">
+
+<h2>Wedding RSVP 💚</h2>
+
+<input
+type="text"
+id="attendName"
+placeholder="Your Name"
+class="popup-input">
+
+<input
+type="number"
+id="memberCount"
+placeholder="Number of Members"
+class="popup-input">
+
+<button
+class="btn green"
+onclick="submitAttend()">
+
+Submit RSVP
+
+</button>
+
+<br><br>
+
+<button
+onclick="closePopup()"
+class="close-btn">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- UNABLE TO ATTEND POPUP -->
+
+<div id="sorryPopup"
+class="popup">
+
+<div class="popup-box">
+
+<h2>We Will Miss You ❤️</h2>
+
+<input
+type="text"
+id="sorryName"
+placeholder="Your Name"
+class="popup-input">
+
+<textarea
+id="sorryMessage"
+placeholder="Blessing Message"
+class="popup-input"
+style="height:120px;"></textarea>
+
+<button
+class="btn red"
+onclick="submitSorry()">
+
+Send Wishes
+
+</button>
+
+<br><br>
+
+<button
+onclick="closePopup()"
+class="close-btn">
+
+Close
+
+</button>
+
+</div>
 
 </div>
 
@@ -453,6 +592,156 @@ document.getElementById("minutes").innerHTML=minutes;
 document.getElementById("seconds").innerHTML=seconds;
 
 },1000);
+
+/* RSVP POPUPS */
+
+function openAttendPopup(){
+
+document.getElementById("attendPopup")
+.style.display="flex";
+
+}
+
+function openSorryPopup(){
+
+document.getElementById("sorryPopup")
+.style.display="flex";
+
+}
+
+function closePopup(){
+
+document.getElementById("attendPopup")
+.style.display="none";
+
+document.getElementById("sorryPopup")
+.style.display="none";
+
+}
+
+/* HAPPILY ATTENDING */
+
+function submitAttend(){
+
+const name =
+document.getElementById("attendName").value;
+
+const members =
+document.getElementById("memberCount").value;
+
+if(name=="" || members==""){
+
+alert("Please fill all details 💚");
+
+return;
+
+}
+
+fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+name:name,
+members:members,
+message:"",
+status:"Happily Attending"
+
+})
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.result=="duplicate"){
+
+alert("RSVP already submitted ❤️");
+
+}else{
+
+alert("Thank You For Your RSVP 💚");
+
+}
+
+document.getElementById("attendName").value="";
+document.getElementById("memberCount").value="";
+
+closePopup();
+
+})
+
+.catch(err=>{
+
+alert("Something went wrong");
+
+});
+
+}
+
+/* UNABLE TO ATTEND */
+
+function submitSorry(){
+
+const name =
+document.getElementById("sorryName").value;
+
+const message =
+document.getElementById("sorryMessage").value;
+
+if(name==""){
+
+alert("Please enter your name ❤️");
+
+return;
+
+}
+
+fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+name:name,
+members:"",
+message:message,
+status:"Unable To Attend"
+
+})
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.result=="duplicate"){
+
+alert("RSVP already submitted ❤️");
+
+}else{
+
+alert("Thank You For Your Wishes ❤️");
+
+}
+
+document.getElementById("sorryName").value="";
+document.getElementById("sorryMessage").value="";
+
+closePopup();
+
+})
+
+.catch(err=>{
+
+alert("Something went wrong");
+
+});
+
+}
 
 </script>
 
