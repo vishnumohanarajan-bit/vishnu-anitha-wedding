@@ -1,56 +1,315 @@
+/* =========================
+GLOBAL STYLES
+========================= */
+
 body{
     margin:0;
     padding:0;
-    background:#f8f1e7;
-    font-family:serif;
-    text-align:center;
-    color:#5a2d0c;
+    background:#f8f2e7;
+    font-family:'Cinzel', serif;
+    color:#5b2c06;
+    overflow-x:hidden;
 }
 
+/* =========================
+LOADER
+========================= */
+
 .loader{
+    position:fixed;
+    width:100%;
     height:100vh;
+    background:#fff8ef;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:25px;
+    z-index:9999;
+    flex-direction:column;
 }
 
-.hero{
-    padding:30px;
+.loader h2{
+    font-size:28px;
 }
 
-h1{
-    font-size:60px;
-    margin:10px;
+/* =========================
+MAIN CONTAINER
+========================= */
+
+.container{
+    text-align:center;
+    padding:20px;
+    position:relative;
 }
 
-h2{
-    font-size:35px;
+/* =========================
+TEXTS
+========================= */
+
+.om{
+    font-size:55px;
+    margin-top:20px;
 }
 
-.couple-img{
-    width:300px;
+.blessing{
+    margin-top:20px;
+    font-size:20px;
+    letter-spacing:2px;
+}
+
+.invite{
+    margin-top:25px;
+    font-size:18px;
+}
+
+.names{
+    font-family:'Great Vibes', cursive;
+    font-size:90px;
+    margin-top:10px;
+    color:#5a2200;
+}
+
+.and{
+    font-size:50px;
+    margin-top:-20px;
+}
+
+/* =========================
+COUPLE IMAGE
+========================= */
+
+.couple{
+    width:85%;
+    max-width:420px;
+    border-radius:30px;
+    margin-top:30px;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.2);
+}
+
+/* =========================
+EVENT INFO BOX
+========================= */
+
+.info-box{
+    margin-top:40px;
+    background:#fff8ef;
+    border:2px solid #d8b07b;
+    border-radius:25px;
+    padding:25px;
+    width:90%;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.info-flex{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.info-item{
+    flex:1;
+    min-width:180px;
+}
+
+.info-item h3{
+    margin-bottom:10px;
+}
+
+/* =========================
+COUNTDOWN
+========================= */
+
+.count-title{
+    margin-top:40px;
+    font-size:28px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.time-box{
+    background:#fff8ef;
+    border:2px solid #d8b07b;
+    padding:20px;
     border-radius:20px;
-    margin-top:20px;
+    width:120px;
 }
 
-.details{
-    margin-top:20px;
+.time-box h1{
+    margin:0;
+    font-size:40px;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.btn{
+    padding:18px 35px;
+    border:none;
+    border-radius:50px;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.green{
+    background:#1b5e20;
+}
+
+.red{
+    background:#8b0000;
+}
+
+/* =========================
+MAP BUTTON
+========================= */
+
+.map-btn{
+    margin-top:40px;
+    display:inline-block;
+    background:#fff8ef;
+    padding:18px 35px;
+    border-radius:50px;
+    border:2px solid #d8b07b;
+    text-decoration:none;
+    color:#5a2200;
+    font-size:20px;
+}
+
+/* =========================
+FLOWERS
+========================= */
+
+.flower{
+    position:fixed;
+    top:-50px;
+    animation:fall linear infinite;
+    z-index:1;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* =========================
+MUSIC BUTTON
+========================= */
+
+.music{
+    position:fixed;
+    right:20px;
+    top:20px;
+    background:#fff;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    border:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* =========================
+RSVP POPUPS
+========================= */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.popup-box{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.2);
+}
+
+.popup-box h2{
+    margin-bottom:20px;
+    color:#5a2200;
+}
+
+.popup-input{
+    width:90%;
+    padding:15px;
+    margin-top:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:16px;
+    font-family:'Cinzel', serif;
+    outline:none;
+}
+
+.popup-input:focus{
+    border:2px solid #d8b07b;
+}
+
+.close-btn{
+    background:none;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+    color:#5a2200;
+}
+
+/* =========================
+MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.names{
+    font-size:65px;
+}
+
+.time-box{
+    width:90px;
+}
+
+.count-title{
     font-size:22px;
 }
 
-#countdown{
-    margin-top:30px;
-    font-size:28px;
-    font-weight:bold;
+.btn{
+    width:90%;
 }
 
-button{
-    margin-top:30px;
-    padding:15px 35px;
-    border:none;
-    border-radius:50px;
-    background:#8b0000;
-    color:white;
-    font-size:18px;
 }
