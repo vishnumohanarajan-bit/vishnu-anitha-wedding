@@ -18,13 +18,36 @@ document.getElementById("loader")
 const music =
 document.getElementById("bgmusic");
 
-/* AUTO PLAY TRY */
+/* AUTO PLAY */
 
-window.addEventListener("click", () => {
+window.onload=function(){
+
+setTimeout(()=>{
+
+document.getElementById("loader")
+.style.display="none";
+
+/* TRY AUTOPLAY */
+
+music.play().catch(()=>{
+
+console.log("Autoplay blocked");
+
+});
+
+},2000);
+
+}
+
+/* PLAY AFTER FIRST TOUCH */
+
+document.addEventListener("click", function(){
 
 music.play();
 
 },{ once:true });
+
+/* MUSIC BUTTON */
 
 function toggleMusic(){
 
