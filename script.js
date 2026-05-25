@@ -1,13 +1,58 @@
 /* LOADER */
 
-window.onload=function(){
+/* MUSIC */
 
-setTimeout(()=>{
+const music =
+document.getElementById("bgmusic");
+
+/* OPEN INVITATION */
+
+function openInvitation(){
 
 document.getElementById("loader")
 .style.display="none";
 
-},2000);
+/* START MUSIC */
+
+music.play();
+
+/* FLOWER SHOWER */
+
+for(let i=0;i<30;i++){
+
+let flower=document.createElement("div");
+
+flower.innerHTML="🌸";
+
+flower.classList.add("flower");
+
+flower.style.left=Math.random()*100+"vw";
+
+flower.style.animationDuration=
+(Math.random()*5+5)+"s";
+
+flower.style.fontSize=
+(Math.random()*20+20)+"px";
+
+document.body.appendChild(flower);
+
+}
+
+}
+
+/* MUSIC BUTTON */
+
+function toggleMusic(){
+
+if(music.paused){
+
+music.play();
+
+}else{
+
+music.pause();
+
+}
 
 }
 
