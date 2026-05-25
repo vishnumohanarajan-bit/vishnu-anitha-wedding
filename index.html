@@ -1,347 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Vishnu ❤️ Anitha</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-    margin:0;
-    padding:0;
-    background:#f8f2e7;
-    font-family:'Cinzel', serif;
-    color:#5b2c06;
-    overflow-x:hidden;
-}
-
-/* LOADER */
-
-.loader{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    background:#fff8ef;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    flex-direction:column;
-}
-
-.loader h2{
-    font-size:28px;
-}
-
-/* MAIN */
-
-.container{
-    text-align:center;
-    padding:20px;
-    position:relative;
-}
-
-/* TEXTS */
-
-.om{
-    font-size:55px;
-    margin-top:20px;
-}
-
-.blessing{
-    margin-top:20px;
-    font-size:20px;
-    letter-spacing:2px;
-}
-
-.invite{
-    margin-top:25px;
-    font-size:18px;
-}
-
-.names{
-    font-family:'Great Vibes', cursive;
-    font-size:90px;
-    margin-top:10px;
-    color:#5a2200;
-}
-
-.and{
-    font-size:50px;
-    margin-top:-20px;
-}
-
-/* IMAGE */
-
-.couple{
-    width:85%;
-    max-width:420px;
-    border-radius:30px;
-    margin-top:30px;
-    box-shadow:0px 10px 30px rgba(0,0,0,0.2);
-}
-
-/* EVENT BOX */
-
-.info-box{
-    margin-top:40px;
-    background:#fff8ef;
-    border:2px solid #d8b07b;
-    border-radius:25px;
-    padding:25px;
-    width:90%;
-    max-width:700px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.info-flex{
-    display:flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.info-item{
-    flex:1;
-    min-width:180px;
-}
-
-.info-item h3{
-    margin-bottom:10px;
-}
-
-/* COUNTDOWN */
-
-.count-title{
-    margin-top:40px;
-    font-size:28px;
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
-
-.time-box{
-    background:#fff8ef;
-    border:2px solid #d8b07b;
-    padding:20px;
-    border-radius:20px;
-    width:120px;
-}
-
-.time-box h1{
-    margin:0;
-    font-size:40px;
-}
-
-/* BUTTONS */
-
-.buttons{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.btn{
-    padding:18px 35px;
-    border:none;
-    border-radius:50px;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.green{
-    background:#1b5e20;
-}
-
-.red{
-    background:#8b0000;
-}
-
-.map-btn{
-    margin-top:40px;
-    display:inline-block;
-    background:#fff8ef;
-    padding:18px 35px;
-    border-radius:50px;
-    border:2px solid #d8b07b;
-    text-decoration:none;
-    color:#5a2200;
-    font-size:20px;
-}
-
-/* FLOWERS */
-
-.flower{
-    position:fixed;
-    top:-50px;
-    animation:fall linear infinite;
-    z-index:1;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-    }
-}
-
-/* MUSIC */
-
-.music{
-    position:fixed;
-    right:20px;
-    top:20px;
-    background:#fff;
-    border-radius:50%;
-    width:60px;
-    height:60px;
-    border:none;
-    font-size:25px;
-}
-
-/* RSVP POPUP */
-
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:9999;
-padding:20px;
-box-sizing:border-box;
-}
-
-.popup-box{
-background:white;
-padding:30px;
-border-radius:25px;
-width:100%;
-max-width:420px;
-text-align:center;
-box-shadow:0px 10px 30px rgba(0,0,0,0.2);
-}
-
-.popup-box h2{
-margin-bottom:20px;
-color:#5a2200;
-}
-
-.popup-input{
-width:90%;
-padding:15px;
-margin-top:15px;
-border-radius:12px;
-border:1px solid #ccc;
-font-size:16px;
-font-family:'Cinzel', serif;
-outline:none;
-}
-
-.popup-input:focus{
-border:2px solid #d8b07b;
-}
-
-.close-btn{
-background:none;
-border:none;
-font-size:18px;
-cursor:pointer;
-color:#5a2200;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.names{
-    font-size:65px;
-}
-
-.time-box{
-    width:90px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-    <h2>Loading Your Invitation...</h2>
-</div>
-
-<!-- MUSIC -->
-
-<button class="music" onclick="toggleMusic()">🎵</button>
-
-<audio id="bgmusic" loop>
-<source src="music.mp3" type="audio/mp3">
-</audio>
-
-<!-- FLOWERS -->
-
-<script>
-
-for(let i=0;i<25;i++){
-
-    let flower=document.createElement("div");
-
-    flower.innerHTML="🌸";
-
-    flower.classList.add("flower");
-
-    flower.style.left=Math.random()*100+"vw";
-
-    flower.style.animationDuration=(Math.random()*5+5)+"s";
-
-    flower.style.fontSize=(Math.random()*20+20)+"px";
-
-    document.body.appendChild(flower);
-
-}
-
-</script>
-
 <!-- MAIN -->
 
 <div class="container">
 
-<div class="om">
-🕉️
+<!-- RADHA KRISHNA IMAGE -->
+
+<div class="radha-krishna">
+
+<img src="radhakrishna.png"
+class="rk-image">
+
 </div>
+
+<!-- BLESSING -->
 
 <div class="blessing">
 WITH THE BLESSINGS OF GOD ALMIGHTY
 </div>
 
+<!-- INVITE TEXT -->
+
 <div class="invite">
 WE CORDIALLY INVITE YOU TO THE WEDDING OF
 </div>
+
+<!-- NAMES -->
 
 <div class="names">
 Vishnu
@@ -355,23 +37,39 @@ Vishnu
 Anitha
 </div>
 
+<!-- COUPLE IMAGE -->
+
 <img src="couple.jpg" class="couple">
 
-<!-- INFO -->
+<!-- EVENT INFO -->
 
 <div class="info-box">
 
 <div class="info-flex">
+
+<!-- DATE -->
 
 <div class="info-item">
 <h3>📅 DATE</h3>
 <p>21 AUG 2026</p>
 </div>
 
+<!-- THALLIKETTU -->
+
 <div class="info-item">
-<h3>⏰ MUHURTHAM</h3>
+<h3>⏰ THALLIKETTU MUHURTHAM</h3>
 <p>8:00 AM - 8:30 AM</p>
 </div>
+
+<!-- MANDAPAM -->
+
+<div class="info-item">
+<h3>🏛️ MANDAPAM MUHURTHAM</h3>
+<p>10:00 AM - 10:30 AM</p>
+<p>Vishnu Inn, Guruvayoor</p>
+</div>
+
+<!-- VENUE -->
 
 <div class="info-item">
 <h3>📍 VENUE</h3>
@@ -518,7 +216,7 @@ Close
 
 </div>
 
-<!-- MAP -->
+<!-- LOCATION BUTTON -->
 
 <br>
 
@@ -533,217 +231,3 @@ target="_blank">
 <br><br><br>
 
 </div>
-
-<!-- SCRIPT -->
-
-<script>
-
-/* LOADER */
-
-window.onload=function(){
-
-setTimeout(()=>{
-
-document.getElementById("loader").style.display="none";
-
-},2000);
-
-}
-
-/* MUSIC */
-
-function toggleMusic(){
-
-let music=document.getElementById("bgmusic");
-
-if(music.paused){
-
-music.play();
-
-}else{
-
-music.pause();
-
-}
-
-}
-
-/* COUNTDOWN */
-
-const weddingDate=new Date("August 21, 2026 08:00:00").getTime();
-
-setInterval(()=>{
-
-const now=new Date().getTime();
-
-const gap=weddingDate-now;
-
-const days=Math.floor(gap/(1000*60*60*24));
-
-const hours=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-
-const minutes=Math.floor((gap%(1000*60*60))/(1000*60));
-
-const seconds=Math.floor((gap%(1000*60))/1000);
-
-document.getElementById("days").innerHTML=days;
-document.getElementById("hours").innerHTML=hours;
-document.getElementById("minutes").innerHTML=minutes;
-document.getElementById("seconds").innerHTML=seconds;
-
-},1000);
-
-/* RSVP POPUPS */
-
-function openAttendPopup(){
-
-document.getElementById("attendPopup")
-.style.display="flex";
-
-}
-
-function openSorryPopup(){
-
-document.getElementById("sorryPopup")
-.style.display="flex";
-
-}
-
-function closePopup(){
-
-document.getElementById("attendPopup")
-.style.display="none";
-
-document.getElementById("sorryPopup")
-.style.display="none";
-
-}
-
-/* HAPPILY ATTENDING */
-
-function submitAttend(){
-
-const name =
-document.getElementById("attendName").value;
-
-const members =
-document.getElementById("memberCount").value;
-
-if(name=="" || members==""){
-
-alert("Please fill all details 💚");
-
-return;
-
-}
-
-fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
-
-method:"POST",
-
-body:JSON.stringify({
-
-name:name,
-members:members,
-message:"",
-status:"Happily Attending"
-
-})
-
-})
-
-.then(res=>res.json())
-
-.then(data=>{
-
-if(data.result=="duplicate"){
-
-alert("RSVP already submitted ❤️");
-
-}else{
-
-alert("Thank You For Your RSVP 💚");
-
-}
-
-document.getElementById("attendName").value="";
-document.getElementById("memberCount").value="";
-
-closePopup();
-
-})
-
-.catch(err=>{
-
-alert("Something went wrong");
-
-});
-
-}
-
-/* UNABLE TO ATTEND */
-
-function submitSorry(){
-
-const name =
-document.getElementById("sorryName").value;
-
-const message =
-document.getElementById("sorryMessage").value;
-
-if(name==""){
-
-alert("Please enter your name ❤️");
-
-return;
-
-}
-
-fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
-
-method:"POST",
-
-body:JSON.stringify({
-
-name:name,
-members:"",
-message:message,
-status:"Unable To Attend"
-
-})
-
-})
-
-.then(res=>res.json())
-
-.then(data=>{
-
-if(data.result=="duplicate"){
-
-alert("RSVP already submitted ❤️");
-
-}else{
-
-alert("Thank You For Your Wishes ❤️");
-
-}
-
-document.getElementById("sorryName").value="";
-document.getElementById("sorryMessage").value="";
-
-closePopup();
-
-})
-
-.catch(err=>{
-
-alert("Something went wrong");
-
-});
-
-}
-
-</script>
-
-</body>
-</html>
