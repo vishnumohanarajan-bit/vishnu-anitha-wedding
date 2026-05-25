@@ -1,18 +1,22 @@
-/* LOADER */
-
-/* MUSIC */
+/* =========================
+MUSIC
+========================= */
 
 const music =
 document.getElementById("bgmusic");
 
-/* OPEN INVITATION */
+/* =========================
+OPEN INVITATION
+========================= */
 
 function openInvitation(){
+
+/* HIDE LOADER */
 
 document.getElementById("loader")
 .style.display="none";
 
-/* START MUSIC */
+/* PLAY MUSIC */
 
 music.play();
 
@@ -40,7 +44,9 @@ document.body.appendChild(flower);
 
 }
 
-/* MUSIC BUTTON */
+/* =========================
+MUSIC BUTTON
+========================= */
 
 function toggleMusic(){
 
@@ -56,58 +62,9 @@ music.pause();
 
 }
 
-/* MUSIC */
-
-/* MUSIC CONTROL */
-
-const music =
-document.getElementById("bgmusic");
-
-/* AUTO PLAY */
-
-window.onload=function(){
-
-setTimeout(()=>{
-
-document.getElementById("loader")
-.style.display="none";
-
-/* TRY AUTOPLAY */
-
-music.play().catch(()=>{
-
-console.log("Autoplay blocked");
-
-});
-
-},2000);
-
-}
-
-/* PLAY AFTER FIRST TOUCH */
-
-document.addEventListener("click", function(){
-
-music.play();
-
-},{ once:true });
-
-/* MUSIC BUTTON */
-
-function toggleMusic(){
-
-if(music.paused){
-
-music.play();
-
-}else{
-
-music.pause();
-
-}
-
-}
-/* COUNTDOWN */
+/* =========================
+COUNTDOWN
+========================= */
 
 const weddingDate=
 new Date("August 21, 2026 08:00:00")
@@ -149,7 +106,9 @@ document.getElementById("seconds")
 
 },1000);
 
-/* RSVP POPUPS */
+/* =========================
+RSVP POPUPS
+========================= */
 
 function openAttendPopup(){
 
@@ -175,7 +134,9 @@ document.getElementById("sorryPopup")
 
 }
 
-/* ATTENDING RSVP */
+/* =========================
+ATTENDING RSVP
+========================= */
 
 function submitAttend(){
 
@@ -212,15 +173,7 @@ status:"Happily Attending"
 
 .then(data=>{
 
-if(data.result=="duplicate"){
-
-alert("RSVP already submitted ❤️");
-
-}else{
-
 alert("Thank You For Your RSVP 💚");
-
-}
 
 document.getElementById("attendName")
 .value="";
@@ -240,7 +193,9 @@ alert("Something went wrong");
 
 }
 
-/* SORRY RSVP */
+/* =========================
+UNABLE TO ATTEND RSVP
+========================= */
 
 function submitSorry(){
 
@@ -277,15 +232,7 @@ status:"Unable To Attend"
 
 .then(data=>{
 
-if(data.result=="duplicate"){
-
-alert("RSVP already submitted ❤️");
-
-}else{
-
 alert("Thank You For Your Wishes ❤️");
-
-}
 
 document.getElementById("sorryName")
 .value="";
