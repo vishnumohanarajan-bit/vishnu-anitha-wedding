@@ -13,10 +13,20 @@ document.getElementById("loader")
 
 /* MUSIC */
 
-function toggleMusic(){
+/* MUSIC CONTROL */
 
-let music=
+const music =
 document.getElementById("bgmusic");
+
+/* AUTO PLAY TRY */
+
+window.addEventListener("click", () => {
+
+music.play();
+
+},{ once:true });
+
+function toggleMusic(){
 
 if(music.paused){
 
@@ -29,7 +39,6 @@ music.pause();
 }
 
 }
-
 /* COUNTDOWN */
 
 const weddingDate=
