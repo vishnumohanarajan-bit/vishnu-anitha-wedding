@@ -22,7 +22,7 @@ music.play();
 
 /* FLOWER SHOWER */
 
-for(let i=0;i<30;i++){
+for(let i=0;i<12;i++){
 
 let flower=document.createElement("div");
 
