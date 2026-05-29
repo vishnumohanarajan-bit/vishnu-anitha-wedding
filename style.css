@@ -358,6 +358,27 @@ margin-bottom:20px;
 color:#5a2200;
 }
 
+/* CALENDAR SECTION */
+
+.calendar-section{
+margin-top:30px;
+text-align:center;
+}
+
+.calendar-btn{
+display:inline-block;
+padding:18px 35px;
+background:#5a2200;
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-size:18px;
+transition:0.3s;
+}
+
+.calendar-btn:hover{
+transform:scale(1.05);
+}
 /* =========================
 MOBILE RESPONSIVE
 ========================= */
