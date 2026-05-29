@@ -22,25 +22,42 @@ music.play();
 
 /* FLOWER SHOWER */
 
-for(let i=0;i<12;i++){
+/* CONTINUOUS FLOWER SHOWER */
+
+function createFlower(){
+
+const flowers=["🌸","🌺","🌼"];
 
 let flower=document.createElement("div");
 
-flower.innerHTML="🌸";
+flower.innerHTML=
+flowers[Math.floor(Math.random()*flowers.length)];
 
 flower.classList.add("flower");
 
 flower.style.left=Math.random()*100+"vw";
 
 flower.style.animationDuration=
-(Math.random()*5+5)+"s";
+(Math.random()*5+6)+"s";
 
 flower.style.fontSize=
-(Math.random()*20+20)+"px";
+(Math.random()*15+18)+"px";
 
 document.body.appendChild(flower);
 
+/* REMOVE AFTER FALL */
+
+setTimeout(()=>{
+
+flower.remove();
+
+},10000);
+
 }
+
+/* NEW FLOWER EVERY 800ms */
+
+setInterval(createFlower,800);
 
 }
 
