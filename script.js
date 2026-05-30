@@ -171,7 +171,7 @@ return;
 
 }
 
-fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwkzEEf9-h_32znTDe6bmzxyoBYEYbW_VioeQw1ea944hOwqancKHHmAKUu89rJnTTo/exec",{
 
 method:"POST",
 
@@ -230,7 +230,7 @@ return;
 
 }
 
-fetch("https://script.google.com/macros/s/AKfycbwKsxBYHPugsLat0jv0yd4hI_YUVsqda61fhfyYwlYxCfcGOW9UxI91p-vl9_qCFoxg/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwkzEEf9-h_32znTDe6bmzxyoBYEYbW_VioeQw1ea944hOwqancKHHmAKUu89rJnTTo/exec",{
 
 method:"POST",
 
